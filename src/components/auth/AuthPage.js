@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../styles/auth.css';
 
-const AuthPage = () => {
+const AuthPage = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   
@@ -27,6 +27,12 @@ const AuthPage = () => {
   const toggleForms = () => {
     setIsActive(!isActive);
     setIsLogin(!isLogin);
+  };
+
+  const handleNavigation = (page) => {
+    if (props.onNavigate) {
+      props.onNavigate(page);
+    }
   };
 
   const handleLoginChange = (e) => {
@@ -154,42 +160,44 @@ const AuthPage = () => {
       {/* Login Form */}
       <div className="form-box login">
         <form className="auth-form" onSubmit={handleLoginSubmit}>
-          <h1>Login</h1>
-          <div id="signInMessage" className="messageDiv" style={{ display: 'none' }}></div>
-          
-          <div className="input-box">
-            <input
-              type="email"
-              name="email"
-              value={loginData.email}
-              onChange={handleLoginChange}
-              placeholder="Email"
-              required
-            />
-            <i className="ri-user-fill"></i>
-          </div>
-          
-          <div className="input-box">
-            <input
-              type="password"
-              name="password"
-              value={loginData.password}
-              onChange={handleLoginChange}
-              placeholder="Password"
-              required
-            />
-            <i className="ri-lock-password-fill"></i>
-          </div>
-          
-          <div className="forgot-link">
-            <a onClick={handleForgotPassword}>Forgot password?</a>
-          </div>
-          
-          <button type="submit" className="auth-btn">Login</button>
-          
-          <p>or login with</p>
-          <div className="social-icons">
-            <a onClick={handleGoogleAuth}><i className="ri-google-fill"></i></a>
+          <div className="form-content">
+            <h1>Login</h1>
+            <div id="signInMessage" className="messageDiv" style={{ display: 'none' }}></div>
+            
+            <div className="input-box">
+              <input
+                type="email"
+                name="email"
+                value={loginData.email}
+                onChange={handleLoginChange}
+                placeholder="Email"
+                required
+              />
+              <i className="ri-user-fill"></i>
+            </div>
+            
+            <div className="input-box">
+              <input
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                placeholder="Password"
+                required
+              />
+              <i className="ri-lock-password-fill"></i>
+            </div>
+            
+            <div className="forgot-link">
+              <a onClick={handleForgotPassword}>Forgot password?</a>
+            </div>
+            
+            <button type="submit" className="auth-btn">Login</button>
+            
+            <p>or login with</p>
+            <div className="social-icons">
+              <a onClick={handleGoogleAuth}><i className="ri-google-fill"></i></a>
+            </div>
           </div>
         </form>
       </div>
@@ -197,83 +205,85 @@ const AuthPage = () => {
       {/* Registration Form */}
       <div className="form-box register">
         <form className="auth-form" onSubmit={handleRegisterSubmit}>
-          <h1>Registration</h1>
-          <div id="signUpMessage" className="messageDiv" style={{ display: 'none' }}></div>
-          
-          <div className="input-box">
-            <input
-              type="text"
-              name="fullName"
-              value={registerData.fullName}
-              onChange={handleRegisterChange}
-              placeholder="Fullname"
-              required
-            />
-            <i className="ri-user-fill"></i>
-          </div>
-          
-          <div className="input-box">
-            <input
-              type="email"
-              name="email"
-              value={registerData.email}
-              onChange={handleRegisterChange}
-              placeholder="Email"
-              required
-            />
-            <i className="ri-mail-fill"></i>
-          </div>
-
-          {/* Role Selection */}
-          <div className="role-selection">
-            <label className="role-label">I am a:</label>
-            <div className="role-options">
-              {['student', 'staff', 'service_provider'].map(role => (
-                <div
-                  key={role}
-                  className={`role-option ${registerData.role === role ? 'selected' : ''}`}
-                  onClick={() => handleRoleSelect(role)}
-                >
-                  {role.split('_').map(word => 
-                    word.charAt(0).toUpperCase() + word.slice(1)
-                  ).join(' ')}
-                </div>
-              ))}
+          <div className="form-content">
+            <h1>Registration</h1>
+            <div id="signUpMessage" className="messageDiv" style={{ display: 'none' }}></div>
+            
+            <div className="input-box">
+              <input
+                type="text"
+                name="fullName"
+                value={registerData.fullName}
+                onChange={handleRegisterChange}
+                placeholder="Fullname"
+                required
+              />
+              <i className="ri-user-fill"></i>
             </div>
-          </div>
+            
+            <div className="input-box">
+              <input
+                type="email"
+                name="email"
+                value={registerData.email}
+                onChange={handleRegisterChange}
+                placeholder="Email"
+                required
+              />
+              <i className="ri-mail-fill"></i>
+            </div>
 
-          {/* Dynamic Role-Specific Fields */}
-          {renderRoleSpecificFields()}
+            {/* Role Selection */}
+            <div className="role-selection">
+              <label className="role-label">I am a:</label>
+              <div className="role-options">
+                {['student', 'staff', 'service_provider'].map(role => (
+                  <div
+                    key={role}
+                    className={`role-option ${registerData.role === role ? 'selected' : ''}`}
+                    onClick={() => handleRoleSelect(role)}
+                  >
+                    {role.split('_').map(word => 
+                      word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ')}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Common Department Field */}
-          <div className="input-box">
-            <input
-              type="text"
-              name="department"
-              value={registerData.department}
-              onChange={handleRegisterChange}
-              placeholder="Department/Unit"
-            />
-            <i className="ri-building-2-fill"></i>
-          </div>
-          
-          <div className="input-box">
-            <input
-              type="password"
-              name="password"
-              value={registerData.password}
-              onChange={handleRegisterChange}
-              placeholder="Password"
-              required
-            />
-            <i className="ri-lock-password-fill"></i>
-          </div>
-          
-          <button type="submit" className="auth-btn">Register</button>
-          
-          <p>or register with</p>
-          <div className="social-icons">
-            <a onClick={handleGoogleAuth}><i className="ri-google-fill"></i></a>
+            {/* Dynamic Role-Specific Fields */}
+            {renderRoleSpecificFields()}
+
+            {/* Common Department Field */}
+            <div className="input-box">
+              <input
+                type="text"
+                name="department"
+                value={registerData.department}
+                onChange={handleRegisterChange}
+                placeholder="Department/Unit"
+              />
+              <i className="ri-building-2-fill"></i>
+            </div>
+            
+            <div className="input-box">
+              <input
+                type="password"
+                name="password"
+                value={registerData.password}
+                onChange={handleRegisterChange}
+                placeholder="Password"
+                required
+              />
+              <i className="ri-lock-password-fill"></i>
+            </div>
+            
+            <button type="submit" className="auth-btn">Register</button>
+            
+            <p>or register with</p>
+            <div className="social-icons">
+              <a onClick={handleGoogleAuth}><i className="ri-google-fill"></i></a>
+            </div>
           </div>
         </form>
       </div>
@@ -284,12 +294,30 @@ const AuthPage = () => {
           <h1>Hello, Welcome <br/>to InfraWatch</h1>
           <p>Don't have an account?</p>
           <button className="auth-btn register-btn" onClick={toggleForms}>Register</button>
+          <p style={{ marginTop: '10px' }}>
+            <a 
+              href="#contact" 
+              onClick={(e) => { e.preventDefault(); handleNavigation('contact'); }}
+              style={{ color: '#fff', textDecoration: 'underline', cursor: 'pointer', fontSize: '14px' }}
+            >
+              Contact Us
+            </a>
+          </p>
         </div>
         
         <div className="toggle-panel toggle-right">
           <h1>Welcome to <br/>InfraWatch</h1>
           <p>Already have an account?</p>
           <button className="auth-btn login-btn" onClick={toggleForms}>Login</button>
+          <p style={{ marginTop: '10px' }}>
+            <a 
+              href="#contact" 
+              onClick={(e) => { e.preventDefault(); handleNavigation('contact'); }}
+              style={{ color: '#fff', textDecoration: 'underline', cursor: 'pointer', fontSize: '14px' }}
+            >
+              Contact Us
+            </a>
+          </p>
         </div>
       </div>
     </div>
