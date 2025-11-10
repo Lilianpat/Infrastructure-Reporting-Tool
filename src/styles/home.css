@@ -16,6 +16,15 @@
   font-family: "Poppins", sans-serif;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0px 0px 0px 0px;
+    margin-right: 0;
+}
+
 a {
   text-decoration: none;
   transition: 0.3s;
@@ -33,7 +42,7 @@ ul {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: var(--text-light);
-  position: relative;
+  margin: 0;
 }
 
 /* Navigation Styles */
