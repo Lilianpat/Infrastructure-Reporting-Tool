@@ -1,0 +1,87 @@
+.sidebar {
+  width: 250px;
+  z-index: 50;
+  height: 100vh;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(14px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-smooth);
+  color: var(--text-light);
+  display: block;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .sidebar-links li {
+  text-indent: -9999px;   /* hide text */
+}
+
+.sidebar.collapsed .sidebar-links li::before {
+  text-indent: 0;
+}
+
+.sidebar.collapsed .desktop-collapse-btn {
+  margin-left: 10px;
+}
+
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.sidebar-links li {
+   margin: 20px 0;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: var(--transition-smooth);
+  color: #2a2a2a; /* Dark grey - better contrast */
+  font-weight: 500;
+}
+
+.sidebar-links li:hover {
+  background: rgba(20, 146, 121, 0.15); /* subtle green hover */
+  color: var(--primary-dark);
+}
+
+.sidebar-links li.active {
+  background: rgba(20, 146, 121, 0.25);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.desktop-collapse-btn {
+display: block;
+  background: var(--primary-color);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;        /* increase icon size */
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  transition: var(--transition-smooth);
+}
+
+.desktop-collapse-btn:hover {
+  background: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+.desktop-collapse-btn {
+    display: none;
+  }
+}

@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* CSS Custom Properties - Design System */
+:root {
+  --primary-color: #1abc9c;
+  --primary-dark: #149279;
+  --accent-color: #ffae00;
+  --accent-hover: #ffc107;
+  --text-light: #ffffff;
+  --text-gray: #cfcaca;
+  --bg-overlay: rgba(20, 146, 121, 0.95);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --max-width: 1200px;
+  --transition-smooth: all 0.3s ease;
+  --transition-slow: all 0.6s ease;
+  --border-radius: 20px;
+}
+
+/* Navigation Bar */
+.home-nav {
+  position: fixed;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(20, 146, 121, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Added box-sizing and top/left/right for proper full-width alignment */
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  /* Added flex-shrink to prevent logo from shrinking */
+  flex-shrink: 0;
+}
+
+.logo-box {
+  width: 50px;
+  height: 50px;
+  background: var(--text-light);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.logo-text {
+  font-weight: 600;
+}
+
+.nav-menu-btn {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+  display: none;
+  transition: var(--transition-smooth);
+  /* added flex-shrink to prevent button from being hidden */
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.nav-menu-btn:hover {
+  transform: scale(1.1);
+}
+
+.home-nav-links {
+   display: flex;
+  align-items: center;
+  gap: 2rem;
+  /* Added flex-shrink to prevent menu from collapsing */
+  flex-shrink: 0;
+}
+
+.home-nav-links a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: var(--transition-smooth);
+}
+
+.home-nav-links a:hover,
+.home-nav-links a.active {
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}

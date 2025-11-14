@@ -1,0 +1,161 @@
+.leaderboard-container {
+  margin-left: 260px;
+  padding: 2.5rem;
+  min-height: 100vh;
+  color: var(--text-light);
+
+  background: linear-gradient(
+    135deg,
+    rgba(26, 188, 156, 0.25),
+    rgba(20, 146, 121, 0.5)
+  );
+}
+
+.page-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/*************** TABS *****************/
+
+.leaderboard-tabs {
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  padding: 8px 18px;
+  border-radius: 20px;
+  color: var(--accent-color);
+  margin-right: 10px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+/*************** LIST *****************/
+
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.leaderboard-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 1rem;
+  border-radius: 15px;
+
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+  transition: var(--transition-smooth);
+}
+
+.leaderboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.rank {
+  font-size: 28px;
+  font-weight: bold;
+  width: 50px;
+  text-align: center;
+}
+/* ----------------------------
+   GOLD / SILVER / BRONZE RANKS
+-----------------------------*/
+
+/* Gold */
+.gold-rank {
+  border: 2px solid gold;
+  background: rgba(255, 215, 0, 0.12);
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.4);
+}
+
+.gold-rank .rank {
+  color: gold;
+  font-size: 28px;
+}
+
+/* Silver */
+.silver-rank {
+  border: 2px solid silver;
+  background: rgba(192, 192, 192, 0.12);
+  box-shadow: 0 0 14px rgba(192, 192, 192, 0.35);
+}
+
+.silver-rank .rank {
+  color: silver;
+  font-size: 26px;
+}
+
+/* Bronze */
+.bronze-rank {
+  border: 2px solid #cd7f32;
+  background: rgba(205, 127, 50, 0.12);
+  box-shadow: 0 0 14px rgba(205, 127, 50, 0.35);
+}
+
+.bronze-rank .rank {
+  color: #cd7f32;
+  font-size: 26px;
+}
+
+
+.lb-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.lb-info h3 {
+  font-size: 18px;
+}
+
+.lb-metrics {
+  font-size: 14px;
+  color: var(--text-gray);
+}
+
+.lb-badges {
+  margin-top: 5px;
+}
+
+.lb-badge {
+  background: rgba(255,255,255,0.1);
+  padding: 6px 10px;
+  border-radius: 12px;
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* Crown icon above avatar */
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.crown {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26px;
+  animation: crownBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes crownBounce {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-4px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+

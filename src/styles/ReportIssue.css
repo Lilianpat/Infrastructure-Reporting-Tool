@@ -1,0 +1,265 @@
+.report-issue-container {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 260px;
+  color: var(--text-light);
+}
+
+.error-text {
+  color: #ff4e4e;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  transition: 0.3s ease;
+}
+
+input.error,
+textarea.error,
+select.error {
+  border-color: #ff4e4e !important;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal Box */
+.success-modal {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2rem;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(12px);
+  animation: scaleIn 0.3s ease;
+}
+
+.checkmark {
+  font-size: 3.5rem;
+  background: var(--primary-color);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1rem;
+}
+
+.modal-btn {
+  background: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 1rem;
+  transition: var(--transition-smooth);
+  font-size: 1rem;
+}
+
+.modal-btn:hover {
+  background: var(--accent-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.modal-btn.secondary {
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+.modal-btn.secondary:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+.map-btn {
+  margin-top: 8px;
+  align-self: flex-start;
+  background: var(--primary-color);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+}
+
+.map-btn:hover {
+  background: var(--accent-color);
+}
+
+/* Fullscreen-ish overlay */
+.map-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* ⭐ FIX */
+  padding-top: 40px;       /* ⭐ FIX */
+  z-index: 200;
+}
+
+/* Card holding the map */
+.map-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  width: 90%;
+  margin: 50px;
+  max-width: 800px;
+
+  /* ⭐ Prevents map from going off-screen */
+  max-height: 85vh;
+  overflow-y: auto;
+
+  backdrop-filter: blur(14px);
+  color: var(--text-light);
+  position: relative;
+}
+
+.map-card h3 {
+  margin-bottom: 10px;
+}
+
+.map-container {
+   width: 100%;
+  height: 200px;
+  min-height: 350px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.close-map {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.map-hint {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+}
+
+.map-coords {
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .report-issue-container {
+    margin-left: 0;
+  }
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-form {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(12px);
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+input,
+textarea,
+select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-color);
+}
+
+textarea {
+  min-height: 120px;
+}
+
+.image-preview {
+  width: 150px;
+  height: 150px;
+  margin-top: 10px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
+}
+
+.submit-btn {
+  background: var(--primary-color);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: var(--text-light);
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: var(--transition-smooth);
+  font-size: 1rem;
+}
+
+.submit-btn:hover {
+  background: var(--accent-color);
+}
