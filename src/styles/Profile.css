@@ -1,0 +1,193 @@
+.profile-container {
+  margin-left: 260px;
+  padding: 2.5rem;
+  min-height: 100vh;
+  color: var(--text-light);
+  background: linear-gradient(
+    135deg,
+    rgba(26, 188, 156, 0.25),
+    rgba(20, 146, 121, 0.5)
+  );
+}
+
+.page-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* PROFILE HEADER */
+.profile-header-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 1.8rem;
+  border-radius: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+}
+
+.profile-email {
+  color: var(--text-gray);
+}
+
+.edit-profile-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border-radius: 15px;
+  background: var(--accent-color);
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+/* EDIT SECTION */
+.edit-section {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+}
+
+.edit-section input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border-radius: 10px;
+  border: none;
+}
+
+.save-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: var(--primary-color);
+  color: white;
+}
+
+/* ACCOUNT SETTINGS */
+.account-settings-card {
+  margin-top: 2rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+}
+
+.settings-btn {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--accent-color);
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+
+.logout {
+  background: #e74c3c;
+  color: white;
+}
+
+/* GAMIFICATION SECTION */
+.gamification-section {
+  margin-top: 2rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+}
+
+.profile-badge {
+  margin-right: 6px;
+  font-size: 22px;
+}
+
+.view-all-badges {
+  color: var(--accent-color);
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.avatar-container {
+  position: relative;
+  text-align: center;
+}
+
+.change-avatar-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: var(--accent-color);
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.password-modal {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+  width: 350px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  margin-top: 12px;
+}
+
+.modal-save-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
