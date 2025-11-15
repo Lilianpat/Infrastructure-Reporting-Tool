@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../../styles/AdminReports.css";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { Link } from "react-router-dom";
+
 
 // Temporary dummy report data
 const reports = [
@@ -101,7 +103,10 @@ const AdminReports = () => {
                     className="view-btn"
                     onClick={() => setSelectedReport(report)}
                   >
-                    View
+                    <Link to={`/admin/report/${report.id}/timeline`} className="view-btn">
+  View Timeline
+</Link>
+
                   </button>
                 </td>
               </tr>

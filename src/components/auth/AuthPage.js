@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import '../../styles/auth.css';
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 const AuthPage = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   // Login form state
   const [loginData, setLoginData] = useState({
     email: '',
@@ -64,30 +69,37 @@ const AuthPage = (props) => {
   };
 
   const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    console.log('Login data:', loginData);const handleLoginSubmit = (e) => {
   e.preventDefault();
 
   const { email, password } = loginData;
 
-  // TEMPORARY DUMMY LOGIN (Replace with API call later)
+  // TEMPORARY DUMMY AUTH (replace with backend later)
   if (email === "admin@infrawatch.com" && password === "admin123") {
-    // Redirect to admin dashboard
-    window.location.href = "/admin/dashboard";
+    login({
+      name: "Admin",
+      email,
+      role: "admin",
+    });
+
+    navigate("/admin/dashboard");
     return;
   }
 
   if (email === "user@infrawatch.com" && password === "user123") {
-    // Redirect to user dashboard
-    window.location.href = "/dashboard";
+    login({
+      name: "Normal User",
+      email,
+      role: "student",
+    });
+
+    navigate("/dashboard");
     return;
   }
 
-  // Show simple error
   alert("Invalid login credentials");
 };
-    // Add your login logic here
-  };
+
+
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();

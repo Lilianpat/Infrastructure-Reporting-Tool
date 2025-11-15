@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminRoute from "./routes/AdminRoute";
 import Home from "./components/home/HomePage";
 import Contact from "./components/contact/ContactPage";
 import Reports from "./components/Reports/Reports";
@@ -25,13 +27,42 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/login" element={<AuthPage />} />
-        <Route path="/dashboard" element={<UserDashboard />} />
+        <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <UserDashboard />
+    </ProtectedRoute>
+  }
+/>
+
+       <Route
+  path="/my-reports"
+  element={
+    <ProtectedRoute>
+      <MyReports />
+    </ProtectedRoute>
+  }
+/>
         <Route path="/report-issue" element={<ReportIssue />} />
-        <Route path="/my-reports" element={<MyReports />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/badges" element={<Badges />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route
+  path="/profile"
+  element={
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  }
+/>
+       <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminLayout />
+    </AdminRoute>
+  }
+>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="reports" element={<AdminReports />} />
           <Route path="users" element={<AdminUsers />} />

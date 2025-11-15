@@ -28,6 +28,10 @@ const AdminLayout = () => {
               <i className="ri-team-fill"></i> Users
             </Link>
           </li>
+
+          <li>
+            <Link to="/admin/categories">Categories</Link>
+        </li>
         </ul>
 
         <button className="admin-logout">
