@@ -1,8 +1,19 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import "../../styles/AdminLayout.css";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 const AdminLayout = () => {
+  const { logout } = useAuth();
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  logout();
+  navigate("/login");
+};
+
   return (
     <div className="admin-wrapper">
 
@@ -34,7 +45,7 @@ const AdminLayout = () => {
         </li>
         </ul>
 
-        <button className="admin-logout">
+        <button onClick={handleLogout} className="admin-logout">
           <i className="ri-logout-box-r-line"></i> Logout
         </button>
       </aside>

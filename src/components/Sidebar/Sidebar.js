@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import "../../styles/Sidebar.css"
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const { logout } = useAuth();
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  logout();
+  navigate("/login");
+};
 
   return (
     <aside className={`sidebar ${collapsed ? "collapsed" : ""}`}>
@@ -23,6 +33,10 @@ const Sidebar = () => {
   <li><Link to="/badges">Badges</Link></li>
   <li><Link to="/leaderboard">Leaderboard</Link></li>
   <li><Link to="/profile">Profile</Link></li>
+  <li onClick={handleLogout} className="logout-link">
+  Logout
+</li>
+
 </ul>
 
     </aside>

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import "../../styles/Profile.css";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+
 
 const Profile = () => {
   // Dummy user data (replace with backend later)
@@ -19,6 +22,14 @@ const Profile = () => {
 
   const [newImage, setNewImage] = useState(null);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+
+  const { logout } = useAuth();
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  logout();
+  navigate("/login");
+};
 
 
 const handleImageUpload = (e) => {
@@ -137,7 +148,7 @@ const handleImageUpload = (e) => {
 </button>
 
           <button className="settings-btn">Update Email</button>
-          <button className="settings-btn logout">Logout</button>
+          <button onClick={handleLogout}  className="settings-btn logout">Logout</button>
         </div>
 
         {/* GAMIFICATION SECTION */}
